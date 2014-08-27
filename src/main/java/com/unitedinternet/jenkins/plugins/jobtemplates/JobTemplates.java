@@ -78,7 +78,7 @@ public class JobTemplates implements RootAction {
         
         final List<Item> getitems = Hudson.getInstance().getAllItems(Item.class);
         for (Item item : getitems) {
-            if (item.getName().startsWith("Template_")) {
+            if (item.getName().toLowerCase().startsWith("template_")) {
                 templateList.add(item);
             }
         }
