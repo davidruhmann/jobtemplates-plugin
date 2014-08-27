@@ -70,7 +70,7 @@ public class JobTemplates implements RootAction {
 
     /**
      * Returns the available job templates.
-     * (i.e. all jobs with names starting with 'Template_')
+     * (i.e. all jobs with names starting with 'template_' or i18n equivalent. case insensitive.)
      * @return ArrayList of template jobs
      */
     public ArrayList<Item> getTemplates() {
@@ -78,7 +78,8 @@ public class JobTemplates implements RootAction {
         
         final List<Item> getitems = Hudson.getInstance().getAllItems(Item.class);
         for (Item item : getitems) {
-            if (item.getName().toLowerCase().startsWith("template_")) {
+            if (item.getName().toLowerCase().startsWith("template_")
+                || item.getName().toLowerCase().startsWith(Messages.templatePrefix())) {
                 templateList.add(item);
             }
         }
